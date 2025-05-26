@@ -24,7 +24,7 @@ $rents = $rentsModel->getRents();
 <div class="container mt-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-primary">📚 Könyvtár</h1>
+        <h1 class="text-primary">📚 Kikölcsönzött/kölcsönözhető könyvek</h1>
         <a href="?todo=new" class="btn btn-success">
             <i class="bi bi-plus-circle"></i> Új könyv felvétele
         </a>
