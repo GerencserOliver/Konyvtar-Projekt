@@ -1,7 +1,7 @@
 <?php
 
-include_once 'Books.php';
-include_once 'Rents.php';
+include_once 'classes/Books.php';
+include_once 'classes/Rents.php';
 
 $booksModel = new Books("localhost", "root", "", "konyvtar");
 $rentsModel = new Rents("localhost", "root", "", "konyvtar");

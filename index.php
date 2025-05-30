@@ -1,10 +1,9 @@
 <?php
 session_start();
-include_once 'Books.php';
-include_once 'Rents.php';
-include_once 'Users.php';
+include_once 'classes/Books.php';
+include_once 'classes/Rents.php';
+include_once 'classes/Users.php';
 
-// Ellenőrzés: Be van-e jelentkezve a felhasználó
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -35,7 +34,7 @@ $rentsModel = new Rents('localhost', 'root', '', 'konyvtar');
 
         <?php
         if ($todo == "new") {
-            include_once 'newBook.php';
+            include_once 'views/newBook.php';
         } else if ($todo == "add") {
             $book = new Book(0, $_POST['title'], $_POST['author'], $_POST['year'], $_POST['isbn'], $_POST['description']);
             $booksModel->addBooks($book);
@@ -46,14 +45,13 @@ $rentsModel = new Rents('localhost', 'root', '', 'konyvtar');
             header("Location: index.php");
             exit;
         } else if ($todo == "rent") {
-            include_once 'newRent.php';
+            include_once 'views/newRent.php';
         } else if ($todo == "rent_add") {
             $rent = new Rent(0, $_POST['book_id'], $_POST['renter_name'], $_POST['date'], 0);
             $rentsModel->addRent($rent);
             header("Location: index.php");
             exit;
         } else if ($todo == "return") {
-            // Késedelmi díj ellenőrzése
             $rent_id = $_GET['id'] ?? null;
             if (!$rent_id || !is_numeric($rent_id)) {
                 echo "<div class='alert alert-danger'>Érvénytelen kölcsönzés azonosító!</div>";
@@ -76,7 +74,7 @@ $rentsModel = new Rents('localhost', 'root', '', 'konyvtar');
 
             $kolcsonzes_timestamp = strtotime($kolcsonzes->date);
             $most = time();
-            $lejart = ($most - $kolcsonzes_timestamp) > 60; // 60 másodperc a tesztidő
+            $lejart = ($most - $kolcsonzes_timestamp) > 60;
 
             $rentsModel->returnBook($rent_id);
 
@@ -89,7 +87,7 @@ $rentsModel = new Rents('localhost', 'root', '', 'konyvtar');
             header("Location: index.php");
             exit;
         } else {
-            include_once 'listBooks.php';
+            include_once 'views/listBooks.php';
         }
         ?>
     </div>

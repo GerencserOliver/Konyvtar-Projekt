@@ -1,6 +1,6 @@
 <?php
 
-include_once 'User.php';
+include_once 'classes/User.php';
 
 class Users {
     private $conn;

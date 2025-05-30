@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'Users.php';
+include_once 'classes/Users.php';
 
 $usersModel = new Users('localhost', 'root', '', 'konyvtar');
 

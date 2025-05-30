@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Book.php';
+include_once 'classes/Book.php';
 
 class Books {
     private $conn;

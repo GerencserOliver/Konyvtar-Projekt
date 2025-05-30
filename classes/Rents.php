@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Rent.php';
+include_once 'classes/Rent.php';
 
 class Rents {
     private $conn;
